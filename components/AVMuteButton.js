@@ -9,8 +9,7 @@ const AVMuteButton = (props) => {
   const [selected, setSelected] = useState(false);
   const handlePress = () => {
     setSelected(!selected);
-    const message = constructUDPMessage(AVMUTE, selected);
-    sendUDP(message, props.socket);
+    sendUDP(constructUDPMessage(AVMUTE, selected), props.socket);
   };
   return (
     <TouchableOpacity
