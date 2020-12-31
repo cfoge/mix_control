@@ -15,7 +15,7 @@ export const initSocket = () => {
 };
 
 export const constructUDPMessage = (name, state) => {
-  console.log('entered constructor function');
+  console.log(name, ' ', state);
   return JSON.stringify({[name]: state});
 };
 

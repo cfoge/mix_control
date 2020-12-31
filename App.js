@@ -24,13 +24,13 @@ const App = () => {
       <View style={styles.body}>
         <SafeAreaView style={{flex: 1}}>
           <View style={styles.container}>
-            <TwoChannelMixer></TwoChannelMixer>
+            <TwoChannelMixer socket={mySocket} />
             <View style={styles.controllButtons}>
               <View>
                 <AVMute title={'AV Mute'} socket={mySocket} />
               </View>
               <View>
-                <AutoFadeModule title={'Auto Fade'} />
+                <AutoFadeModule title={'Auto Fade'} socket={mySocket} />
               </View>
             </View>
           </View>
