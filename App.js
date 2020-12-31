@@ -6,25 +6,17 @@
  * @flow strict-local
  */
 
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Text,
-  StatusBar,
-  TouchableOpacity,
-} from 'react-native';
-import HoldToTriggerButton from './components/AVMuteButton';
+import {SafeAreaView, StyleSheet, View, Text, StatusBar} from 'react-native';
+import AVMute from './components/AVMuteButton';
 import AutoFadeModule from './components/AutoFadeModule';
 import {colors} from './Colors';
 import TwoChannelMixer from './components/TwoChannelMixer';
-import socket from './socket';
-import sendUDP from './sendUDP';
+import {initSocket} from './socket';
 
 const App = () => {
-  const [mySocket, setMySocket] = useState(socket);
+  const [mySocket, setMySocket] = useState(initSocket);
 
   return (
     <>
@@ -35,14 +27,11 @@ const App = () => {
             <TwoChannelMixer></TwoChannelMixer>
             <View style={styles.controllButtons}>
               <View>
-                <HoldToTriggerButton title={'AV Mute'} />
+                <AVMute title={'AV Mute'} socket={mySocket} />
               </View>
               <View>
                 <AutoFadeModule title={'Auto Fade'} />
               </View>
-              <TouchableOpacity
-                style={styles.test1}
-                onPress={() => sendUDP('test1', mySocket)}></TouchableOpacity>
             </View>
           </View>
           <Text style={styles.title}>Video Mixer Control</Text>
