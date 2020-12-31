@@ -6,10 +6,13 @@ import {colors} from '../Colors';
 function ChannelInputButtons(props) {
   const maxNumberOfButtons = [1, 2, 3, 4];
   const numberOfButtons = maxNumberOfButtons.slice(0, props.numberOfButtons);
+
   const listItems = numberOfButtons.map((number) => (
     <BasicButton
       title={`${props.buttonText} ${number}`}
+      UDPLabel={`${props.label} ${props.buttonText} ${number}`}
       key={props.label + props.buttonText + number}
+      socket={props.socket}
     />
   ));
   return (

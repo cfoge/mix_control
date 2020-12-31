@@ -53,6 +53,7 @@ const TwoChannelMixer = (props) => {
           numberOfButtons={4}
           label={'A'}
           buttonText={'Input'}
+          socket={props.socket}
         />
 
         <ChannelInputButtons
@@ -60,6 +61,7 @@ const TwoChannelMixer = (props) => {
           numberOfButtons={4}
           label={'B'}
           buttonText={'Input'}
+          socket={props.socket}
         />
       </View>
       <View style={styles.sliderContainer}>
