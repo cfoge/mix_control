@@ -6,43 +6,17 @@
  * @flow strict-local
  */
 
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Text,
-  StatusBar,
-  TouchableOpacity,
-} from 'react-native';
-import HoldToTriggerButton from './components/AVMuteButton';
+import {SafeAreaView, StyleSheet, View, Text, StatusBar} from 'react-native';
+import AVMute from './components/AVMuteButton';
 import AutoFadeModule from './components/AutoFadeModule';
 import {colors} from './Colors';
 import TwoChannelMixer from './components/TwoChannelMixer';
-import socket from './socket';
+import {initSocket} from './socket';
 
 const App = () => {
-  const [mySocket, setMySocket] = useState(socket);
-  // console.log('mySocket ', mySocket);
-  const sendUDP = (message) => {
-    mySocket.setBroadcast(true);
-    console.log('sendUDP called');
-
-    console.log('mysock onece called');
-    mySocket.send(
-      message,
-      undefined,
-      undefined,
-      5001,
-      '192.168.1.255',
-      function (err) {
-        if (err) throw err;
-
-        console.log('Message sent!');
-      },
-    );
-  };
+  const [mySocket, setMySocket] = useState(initSocket);
 
   return (
     <>
@@ -50,17 +24,14 @@ const App = () => {
       <View style={styles.body}>
         <SafeAreaView style={{flex: 1}}>
           <View style={styles.container}>
-            <TwoChannelMixer></TwoChannelMixer>
+            <TwoChannelMixer socket={mySocket} />
             <View style={styles.controllButtons}>
               <View>
-                <HoldToTriggerButton title={'AV Mute'} />
+                <AVMute title={'AV Mute'} socket={mySocket} />
               </View>
               <View>
-                <AutoFadeModule title={'Auto Fade'} />
+                <AutoFadeModule title={'Auto Fade'} socket={mySocket} />
               </View>
-              <TouchableOpacity
-                style={styles.test1}
-                onPress={() => sendUDP('test1')}></TouchableOpacity>
             </View>
           </View>
           <Text style={styles.title}>Video Mixer Control</Text>

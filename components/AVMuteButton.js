@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
 import {Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {colors} from '../Colors';
+import {constructUDPMessage, sendUDP} from '../socket';
+
+const AVMUTE = 'AVMUTE';
 
 const AVMuteButton = (props) => {
   const [selected, setSelected] = useState(false);
   const handlePress = () => {
     setSelected(!selected);
+    sendUDP(constructUDPMessage(AVMUTE, selected), props.socket);
   };
   return (
     <TouchableOpacity

@@ -2,12 +2,16 @@ import React, {useEffect, useState} from 'react';
 import {StyleSheet, Animated, View} from 'react-native';
 import TbarSlider from './TbarSlider';
 import ChannelInputButtons from './ChannelInputButtons';
+import {constructUDPMessage, sendUDP} from '../socket';
 
-const TwoChannelMixer = () => {
+const TBAR = 'TBAR';
+
+const TwoChannelMixer = (props) => {
   const [sliderValue, setSliderValue] = useState(0.5);
   const onValueChange = (value) => {
     setSliderValue(value);
     handleAnimation(value);
+    sendUDP(constructUDPMessage(TBAR, value), props.socket);
   };
   const [animation, setAnimation] = useState(new Animated.Value(0));
   const greenTransport = 'rgb(0,170,128)';
@@ -49,6 +53,7 @@ const TwoChannelMixer = () => {
           numberOfButtons={4}
           label={'A'}
           buttonText={'Input'}
+          socket={props.socket}
         />
 
         <ChannelInputButtons
@@ -56,6 +61,7 @@ const TwoChannelMixer = () => {
           numberOfButtons={4}
           label={'B'}
           buttonText={'Input'}
+          socket={props.socket}
         />
       </View>
       <View style={styles.sliderContainer}>

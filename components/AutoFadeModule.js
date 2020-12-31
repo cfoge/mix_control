@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {Text, TouchableOpacity, StyleSheet, View} from 'react-native';
+import {Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {colors} from '../Colors';
-import dgram from 'react-native-udp';
 import Slider from '@react-native-community/slider';
+import {constructUDPMessage, sendUDP} from '../socket';
+
+const AUTOFADE = 'AUTOFADE';
 
 const AutoFadeModule = (props) => {
   const [selected, setSelected] = useState(false);
@@ -12,6 +14,7 @@ const AutoFadeModule = (props) => {
 
   const handlePress = () => {
     setSelected(!selected);
+    sendUDP(constructUDPMessage(AUTOFADE, autoFadeTime), props.socket);
   };
 
   const onValueChange = (value) => {
