@@ -21,28 +21,10 @@ import AutoFadeModule from './components/AutoFadeModule';
 import {colors} from './Colors';
 import TwoChannelMixer from './components/TwoChannelMixer';
 import socket from './socket';
+import sendUDP from './sendUDP';
 
 const App = () => {
   const [mySocket, setMySocket] = useState(socket);
-  // console.log('mySocket ', mySocket);
-  const sendUDP = (message) => {
-    mySocket.setBroadcast(true);
-    console.log('sendUDP called');
-
-    console.log('mysock onece called');
-    mySocket.send(
-      message,
-      undefined,
-      undefined,
-      5001,
-      '192.168.1.255',
-      function (err) {
-        if (err) throw err;
-
-        console.log('Message sent!');
-      },
-    );
-  };
 
   return (
     <>
@@ -60,7 +42,7 @@ const App = () => {
               </View>
               <TouchableOpacity
                 style={styles.test1}
-                onPress={() => sendUDP('test1')}></TouchableOpacity>
+                onPress={() => sendUDP('test1', mySocket)}></TouchableOpacity>
             </View>
           </View>
           <Text style={styles.title}>Video Mixer Control</Text>
