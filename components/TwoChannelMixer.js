@@ -17,10 +17,6 @@ const TwoChannelMixer = (props) => {
   const greenTransport = 'rgb(0,170,128)';
   const greyTransport = 'rgb(68,68,68)';
 
-  useEffect(() => {
-    onValueChange(0.5);
-  }, []);
-
   const handleAnimation = (value) => {
     Animated.timing(animation, {
       toValue: value,
