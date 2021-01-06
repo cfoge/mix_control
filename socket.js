@@ -15,15 +15,13 @@ export const initSocket = () => {
 };
 
 export const constructUDPMessage = (name, state) => {
-  console.log(name, ' ', state);
-  return JSON.stringify({[name]: state});
+  console.log('VidMXApp', name, state);
+  return JSON.stringify({source: 'VidMXApp', [name]: state});
 };
 
 export const sendUDP = (message, socket) => {
   socket.setBroadcast(true);
-  console.log('sendUDP called');
 
-  console.log('mysock onece called');
   socket.send(message, undefined, undefined, 5001, '192.168.1.255', function (
     err,
   ) {

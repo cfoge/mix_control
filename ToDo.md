@@ -12,8 +12,6 @@ check for UDP sucsessfull message after backgrounding app
 
 receve udp test
 
-unique udp prefix
-
 customise ip address
 
 health check connection indicator
@@ -35,3 +33,5 @@ DONE get a message from each button/event to trigger a UDP send
 DONE Ask Rob if he's interested in moving the title to the top for easier access to the functionality when holding a phone
 
 DONE Rounded corners on all rects
+
+DONE unique udp prefix
