@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useReducer, useState} from 'react';
 import {StyleSheet, Animated, View} from 'react-native';
 import TbarSlider from './TbarSlider';
 import ChannelInputButtons from './ChannelInputButtons';
@@ -50,6 +50,7 @@ const TwoChannelMixer = (props) => {
           label={'A'}
           buttonText={'Input'}
           socket={props.socket}
+          borderStyle={styles.borderStyleLeft}
         />
 
         <ChannelInputButtons
@@ -58,6 +59,7 @@ const TwoChannelMixer = (props) => {
           label={'B'}
           buttonText={'Input'}
           socket={props.socket}
+          borderStyle={styles.borderStyleRight}
         />
       </View>
       <View style={styles.sliderContainer}>
@@ -76,6 +78,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     flexDirection: 'row',
     paddingVertical: 24,
+  },
+
+  borderStyleLeft: {
+    borderBottomLeftRadius: 16,
+    borderTopLeftRadius: 16,
+  },
+  borderStyleRight: {
+    borderBottomRightRadius: 16,
+    borderTopRightRadius: 16,
   },
 });
 

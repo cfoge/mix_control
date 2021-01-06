@@ -34,7 +34,6 @@ const App = () => {
               </View>
             </View>
           </View>
-          <Text style={styles.title}>Video Mixer Control</Text>
         </SafeAreaView>
       </View>
     </>

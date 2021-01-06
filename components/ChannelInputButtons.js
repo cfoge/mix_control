@@ -16,7 +16,12 @@ function ChannelInputButtons(props) {
     />
   ));
   return (
-    <Animated.View style={{...styles.inputContainer, ...props.animatedStyle}}>
+    <Animated.View
+      style={{
+        ...styles.inputContainer,
+        ...props.animatedStyle,
+        ...props.borderStyle,
+      }}>
       <View style={styles.inputList}>
         <Text style={styles.inputText}>{props.label} </Text>
         {listItems}
