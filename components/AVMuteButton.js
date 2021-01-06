@@ -24,12 +24,12 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 14,
     fontWeight: '800',
-    color: colors.lightblue,
+    color: colors.yellow,
     textTransform: 'uppercase',
   },
   button: {
     alignItems: 'center',
-    backgroundColor: colors.yellow,
+    backgroundColor: colors.lightgray,
     width: 100,
     height: 100,
     paddingTop: 40,

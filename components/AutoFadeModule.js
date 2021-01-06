@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
 
   buttonPressed: {
     alignItems: 'center',
-    backgroundColor: colors.red,
+    backgroundColor: colors.lightgray,
     padding: 40,
     borderRadius: 16,
   },
