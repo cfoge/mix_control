@@ -2,10 +2,6 @@ TO DO:
 
 Autofade button returns to the default color as over the course of the fade
 
-Tbar should only send a message when the slider stops moving not ever time it moves
-
-Make colurs more consistant across the ap
-
 channel select inputs should be only one activer at a time
 
 check for UDP sucsessfull message after backgrounding app
@@ -35,3 +31,5 @@ DONE Ask Rob if he's interested in moving the title to the top for easier access
 DONE Rounded corners on all rects
 
 DONE unique udp prefix
+
+DONE Make colurs more consistant across the ap

@@ -1,14 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Text, TouchableHighlight, StyleSheet} from 'react-native';
 import {colors} from '../Colors';
 import {constructUDPMessage, sendUDP} from '../socket';
 
 const BasicButton = (props) => {
-  const [selected, setSelected] = useState(false);
-
   const handlePress = () => {
-    setSelected(!selected);
-    sendUDP(constructUDPMessage(props.UDPLabel, !selected), props.socket);
+    props.buttonTriggered(props.buttonNumber);
+    sendUDP(
+      constructUDPMessage(props.udpLable, !props.buttonSelected),
+      props.socket,
+    );
   };
 
   return (
@@ -16,8 +17,11 @@ const BasicButton = (props) => {
       onPress={handlePress}
       activeOpacity={0.6}
       underlayColor={colors.grey}
-      style={selected ? styles.buttonPressed : styles.button}>
-      <Text style={selected ? styles.buttonTextPressed : styles.buttonText}>
+      style={props.buttonSelected ? styles.buttonPressed : styles.button}>
+      <Text
+        style={
+          props.buttonSelected ? styles.buttonTextPressed : styles.buttonText
+        }>
         {props.title}
       </Text>
     </TouchableHighlight>
