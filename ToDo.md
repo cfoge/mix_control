@@ -2,7 +2,6 @@ TO DO:
 
 Autofade button returns to the default color as over the course of the fade
 
-channel select inputs should be only one activer at a time
 
 check for UDP sucsessfull message after backgrounding app
 
@@ -12,7 +11,12 @@ customise ip address
 
 health check connection indicator
 
+add startup page
+
+add icon
+
 ---
+DONE channel select inputs should be only one activer at a time
 
 DONE //colour changing input containors driven by tbar slider
 
