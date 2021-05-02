@@ -11,7 +11,6 @@ import {
   SafeAreaView,
   StyleSheet,
   View,
-  Button,
   StatusBar,
   TouchableOpacity,
 } from 'react-native';
@@ -22,7 +21,7 @@ import TwoChannelMixer from './TwoChannelMixer';
 import {initSocket} from '../socket';
 import {CogIcon} from '../assets/SvgIcons';
 
-export default HomeScreen = (props) => {
+export default function HomeScreen(props) {
   const [mySocket, setMySocket] = useState(initSocket);
 
   React.useLayoutEffect(() => {
@@ -55,7 +54,7 @@ export default HomeScreen = (props) => {
       </View>
     </>
   );
-};
+}
 
 const styles = StyleSheet.create({
   body: {

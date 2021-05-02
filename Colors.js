@@ -8,5 +8,6 @@ export const colors = {
   grey: '#2a2a2a',
   midGrey: '#333333',
   lightgray: '#444444',
+  superlightgray: '#aaaaaa',
   blueShadow: '#003452',
 };
